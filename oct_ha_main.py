@@ -18,6 +18,8 @@ def rückgeld():
         antwort_preis = input(f"Ist der eingegebene Preis \033[1;33m{preis:.2f}€\033[0m korrekt? (\033[1;32mJ\033[0m/\033[1;31mn\033[0m)   \t>>> :   ".replace(".",","))
         if antwort_preis == "j" or antwort_preis == "ja" or antwort_preis == "J" or antwort_preis == "Ja" or antwort_preis == "":
             break
+        else:
+            print("Try again!")
 # get input geld
     while True:
         while True:
@@ -41,6 +43,7 @@ def rückgeld():
     wechselgeld = geld - preis
 
     if wechselgeld > 0:
+        print()
         print("#########################################################")
         print("#\t\t\t\t\t\t\t#")
         print(f"#\tDein Wechselgeld beträgt \033[1;4;32m{wechselgeld:.2f}€\033[0m".replace(".",","),".   \t\t#", sep="")
@@ -193,7 +196,7 @@ while True:
         print(input("Wähle (\033[1;33mm\033[0m), um ins Hauptmenü zu gelangen\nund (\033[1;31me\033[0m), um das Programm zu beenden. (\033[1;33mM\033[0m/\033[1;31me\033[0m) \t\t>>> :   "))
 
 ############################################################################################################
-
+    print()
     print("#################################################################")
     print("#\t\t\t\t\t\t\t\t#")
     print("#\tWelches Programm soll ausgeführt werden?\t\t#")
@@ -230,14 +233,62 @@ while True:
             print()
 
     if programmauswahl == 1:
-        rückgeld()
+        inner_loop_rueck = 1
+        while inner_loop_rueck:
+            rückgeld()
+            inner_input = input("Neue Rückgeldberechnung starten? (\033[1;32mJ\033[0m/\033[1;31mn\033[0m) \t\t\t>>> :\t")
+            if inner_input == "n" or inner_input == "N":
+                print()
+                inner_loop_rueck = 0
+                break
+            elif inner_input == "j" or inner_input == "ja" or inner_input == "" or inner_input == "J" or inner_input == "Ja":
+                print()
+                print("Starte neue >>> \033[4;33mRückgeldberechnung\033[0m <<<")
+                print()
+            else:
+                print()
+                print("Gib (j) oder (n) ein! (\033[1;32mJ\033[0m/\033[1;31mn\033[0m) >>> :\t")
+                print()
         schleifencounter = 1
+
     elif programmauswahl == 2:
-        rabattrechner()
+        inner_loop_rabatt = 1
+        while inner_loop_rabatt:
+            rabattrechner()
+            inner_input = input("Neue Rabattberechnung starten? (\033[1;32mJ\033[0m/\033[1;31mn\033[0m) \t\t\t>>> :\t")
+            if inner_input == "n" or inner_input == "N":
+                print()
+                inner_loop_rabatt = 0
+                break
+            elif inner_input == "j" or inner_input == "ja" or inner_input == "" or inner_input == "J" or inner_input == "Ja":
+                print()
+                print("Starte neue >>> \033[4;33mRabattberechnung\033[0m <<<")
+                print()
+            else:
+                print()
+                print("Gib (j) oder (n) ein! (\033[1;32mJ\033[0m/\033[1;31mn\033[0m) >>> :\t")
+                print()
         schleifencounter = 1
+
     elif programmauswahl == 3:
-        benzinrechner()
+        inner_loop_benzin = 1
+        while inner_loop_benzin:
+            benzinrechner()
+            inner_input = input("Neue Benzinkostenrechnung starten? (\033[1;32mJ\033[0m/\033[1;31mn\033[0m) \t\t\t>>> :\t")
+            if inner_input == "n" or inner_input == "N":
+                print()
+                inner_loop_benzin = 0
+                break
+            elif inner_input == "j" or inner_input == "ja" or inner_input == "" or inner_input == "J" or inner_input == "Ja":
+                print()
+                print("Starte neue >>> \033[4;33mBenzinkostenrechnung\033[0m <<<")
+                print()
+            else:
+                print()
+                print("Gib (j) oder (n) ein! (\033[1;32mJ\033[0m/\033[1;31mn\033[0m) >>> :\t")
+                print()
         schleifencounter = 1
+
     else:
         print("Auf Wiedersehen.")
         print()
